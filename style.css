@@ -1,0 +1,242 @@
+/* إعدادات الخطوط والخلفية العامة */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Cairo", sans-serif;
+  background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+/* العنوان الرئيسي */
+.title {
+  font-family: "Reem Kufi", sans-serif;
+  color: #c9184a;
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.hint {
+  color: #a71e42;
+  margin-top: 30px;
+  font-size: 0.95rem;
+  text-align: center;
+  animation: bounce 2s infinite;
+}
+
+/* تصميم الجواب (The Envelope) */
+.envelope-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  transition: all 0.8s ease;
+}
+
+.envelope {
+  position: relative;
+  width: 280px;
+  height: 180px;
+  background-color: #ffb5a7;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0 10px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+/* غطاء الجواب المثلث */
+.flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 140px solid transparent;
+  border-right: 140px solid transparent;
+  border-top: 100px solid #f08080;
+  transform-origin: top;
+  transition: transform 0.4s ease 0.2s;
+  z-index: 3;
+}
+
+/* ختم القلب اللي بيفتح الجواب */
+.heart-seal {
+  position: absolute;
+  font-size: 2.5rem;
+  /* top: 75px;
+  left: calc(50% - 22.5px); */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  transition: 1s ease;
+  user-select: none;
+}
+
+.heart-seal:hover {
+  opacity: 0;
+}
+
+/* أنيميشن فتح الجواب عند الضغط */
+.envelope.open .flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+/* كارت المعايدة الداخلي (The Card) */
+.card-wrapper {
+  width: 100%;
+  transition: all 1s ease;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(201, 24, 74, 0.15);
+  padding: 30px 25px;
+  border: 2px solid #ffb5a7;
+  text-align: center;
+  position: relative;
+  background-image: radial-gradient(#fff5f5 10%, transparent 11%);
+  background-size: 15px 15px;
+}
+
+.card-header {
+  font-family: "Reem Kufi", sans-serif;
+  font-size: 1.4rem;
+  color: #c9184a;
+  font-weight: bold;
+  margin-bottom: 25px;
+  border-bottom: 1px dashed #ffb5a7;
+  padding-bottom: 15px;
+}
+
+.card-body p {
+  color: #4a4a4a;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+/* صندوق الوعد والبيت المستقبلي */
+.promise-box {
+  background-color: #fff0f3;
+  border-right: 4px solid #ff4d6d;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 25px 0;
+}
+
+.promise-box p {
+  color: #c9184a;
+  font-weight: bold;
+  font-size: 1.15rem;
+  margin-bottom: 0;
+}
+
+.love-text {
+  font-size: 1.3rem !important;
+  font-weight: bold;
+  color: #ff4d6d !important;
+}
+
+/* حالات الإخفاء والظهور */
+.hidden {
+  display: none;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.fade-out {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+}
+
+/* تأثير ظهور الكلام بالتدريج (Fade-in Animations) */
+.fade-in {
+  opacity: 0;
+  animation: fadeInUp 0.8s forwards ease;
+}
+
+.delay-1 {
+  animation-delay: 0.5s;
+}
+.delay-2 {
+  animation-delay: 1.2s;
+}
+.delay-3 {
+  animation-delay: 2s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* قلوب متطايرة في الخلفية */
+.hearts-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.bg-heart {
+  position: absolute;
+  color: rgba(255, 77, 109, 0.15);
+  font-size: 1.5rem;
+  animation: floatUp 6s linear infinite;
+  bottom: -50px;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
